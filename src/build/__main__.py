@@ -49,7 +49,7 @@ def _init_colors() -> Dict[str, str]:
 _STYLES = _init_colors()
 print(_STYLES)
 
-print('\33[91m testmes \33[0m")
+print('\33[91m testmes \33[0m')
 print('{red}ERROR{reset} {}'.format("msg", **_STYLES))
 
 def _showwarning(
