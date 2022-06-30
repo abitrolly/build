@@ -34,11 +34,14 @@ _NO_COLORS = {color: '' for color in _COLORS}
 
 
 def _init_colors() -> Dict[str, str]:
+    print(os.environ)
     if 'NO_COLOR' in os.environ:
         if 'FORCE_COLOR' in os.environ:
             warnings.warn('Both NO_COLOR and FORCE_COLOR environment variables are set, disabling color')
+        print("colors disabled")
         return _NO_COLORS
     elif 'FORCE_COLOR' in os.environ or sys.stdout.isatty():
+        print("colors forced")
         return _COLORS
     return _NO_COLORS
 
