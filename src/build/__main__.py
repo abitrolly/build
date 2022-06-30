@@ -49,9 +49,8 @@ def _init_colors() -> Dict[str, str]:
 _STYLES = _init_colors()
 print(_STYLES)
 
-print("\033[91m testmes \33[0m")
-print(r"\033[91m testmes \33[0m")
-
+print('\33[91m testmes \33[0m")
+print('{red}ERROR{reset} {}'.format("msg", **_STYLES))
 
 def _showwarning(
     message: Union[Warning, str],
@@ -65,6 +64,7 @@ def _showwarning(
 
 
 def _setup_cli() -> None:
+    print('{red}ERROR{reset} {}'.format("precolorama", **_STYLES))
     warnings.showwarning = _showwarning
 
     try:
@@ -73,6 +73,7 @@ def _setup_cli() -> None:
         pass
     else:
         colorama.init()  # fix colors on windows
+    print('{red}ERROR{reset} {}'.format("postcolorama", **_STYLES))
 
 
 def _error(msg: str, code: int = 1) -> NoReturn:  # pragma: no cover
