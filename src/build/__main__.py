@@ -34,7 +34,6 @@ _NO_COLORS = {color: '' for color in _COLORS}
 
 
 def _init_colors() -> Dict[str, str]:
-    print(os.environ)
     if 'NO_COLOR' in os.environ:
         if 'FORCE_COLOR' in os.environ:
             warnings.warn('Both NO_COLOR and FORCE_COLOR environment variables are set, disabling color')
@@ -43,10 +42,15 @@ def _init_colors() -> Dict[str, str]:
     elif 'FORCE_COLOR' in os.environ or sys.stdout.isatty():
         print("colors forced")
         return _COLORS
+    print("colors no luck")
     return _NO_COLORS
 
 
 _STYLES = _init_colors()
+print(_STYLES)
+
+print("\033[91m testmes \33[0m")
+print(r"\033[91m testmes \33[0m")
 
 
 def _showwarning(
