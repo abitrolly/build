@@ -37,7 +37,7 @@ from ._exceptions import (
     BuildSystemTableValidationError,
     TypoWarning,
 )
-from ._util import check_dependency, parse_wheel_filename
+from ._util import check_dependency, debug, parse_wheel_filename
 
 
 TYPE_CHECKING = False
@@ -193,6 +193,7 @@ class ProjectBuilder:
         self._build_system = _parse_build_system_table(_read_pyproject_toml(pyproject_toml_path))
 
         self._backend = self._build_system['build-backend']
+        debug("build:backend  " + self._backend)
 
         if backend_paths := self._build_system.get('backend-path'):
             _validate_backend_path(self._source_dir, backend_paths)
@@ -204,6 +205,7 @@ class ProjectBuilder:
             python_executable=self._python_executable,
             runner=self._runner,
         )
+        debug("build:python_executable  " + str(self._python_executable))
 
     @classmethod
     def from_isolated_env(
