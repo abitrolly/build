@@ -340,7 +340,8 @@ class ProjectBuilder:
         :returns: The full path to the built distribution
         """
         versions = self.get_backend_version()
-        _ctx.log(f'Building {distribution}...\n(using {versions})', kind=('step',))
+        _ctx.log(f'Building {distribution}...', kind=('step',))
+        _ctx.log(versions)
 
         kwargs = {} if metadata_directory is None else {'metadata_directory': metadata_directory}
         return self._call_backend(f'build_{distribution}', output_directory, config_settings, **kwargs)
