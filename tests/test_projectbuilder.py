@@ -557,6 +557,7 @@ def test_log(mocker: pytest_mock.MockerFixture, caplog: pytest.LogCaptureFixture
     builder.build('wheel', '.')
 
     assert [(record.levelname, record.message) for record in caplog.records] == [
+        ('INFO', 'build:backend  flit_core.buildapi'),
         ('INFO', 'Getting build dependencies for sdist...'),
         ('INFO', 'Getting build dependencies for wheel...'),
         ('INFO', 'Getting metadata for wheel...'),
